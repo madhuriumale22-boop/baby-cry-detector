@@ -132,7 +132,7 @@ def main():
         st.write("`.wav`, `.mp3`, `.m4a`")
         
         st.header("📊 Model Status")
-        model = load_trained_model("model.h5")
+        model = load_trained_model("model_weights.npz")
         le = load_label_encoder("labels.pkl")
         
         if model and le:
@@ -166,9 +166,7 @@ def main():
                     st.stop()
                 
                 # 2. Predict
-                # Reshape for ANN input (batch_size, num_features)
-                feature_array = np.array([features])
-                pred_proba = model.predict(feature_array, verbose=0)[0]
+                pred_proba = model.predict(features)
                 pred_index = np.argmax(pred_proba)
                 
                 label_str = le.inverse_transform([pred_index])[0]
