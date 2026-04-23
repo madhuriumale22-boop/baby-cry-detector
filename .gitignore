@@ -1,8 +1,6 @@
-_pycache_/
+__pycache__/
 .venv/
 venv/
-model.h5
-labels.pkl
 *.wav
 *.mp3
 .DS_Store
