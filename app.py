@@ -17,31 +17,75 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for Modern Parenting Theme
+# Custom CSS for Modern Parenting Theme (works in both light & dark modes)
 st.markdown("""
 <style>
-    /* Light Theme Backgrounds */
-    .stApp {
-        background-color: #f7f9fa;
-        color: #2c3e50;
-    }
-    
     /* Headers */
     h1, h2, h3 {
-        color: #34495e !important;
         font-family: 'Helvetica Neue', sans-serif;
         font-weight: 600;
     }
     
+    /* Sidebar text — ensure visibility in both themes */
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] li,
+    [data-testid="stSidebar"] .stMarkdown {
+        color: #2563eb !important;
+        font-size: 14px;
+    }
+    
+    /* Sidebar headers */
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
+        color: #1e40af !important;
+    }
+    
+    /* Sidebar caption (Disclaimer) */
+    [data-testid="stSidebar"] .stCaption,
+    [data-testid="stSidebar"] small,
+    [data-testid="stSidebar"] caption {
+        color: #dc2626 !important;
+        font-size: 13px;
+    }
+    
     /* Upload Box */
-    .stFileUploader>div>div {
-        background-color: #ffffff;
-        border: 2px dashed #bdc3c7;
+    .stFileUploader > div > div {
+        border: 2px dashed #6c5ce7;
         border-radius: 12px;
     }
     
+    /* Upload button inside file uploader */
+    .stFileUploader button {
+        background-color: #6c5ce7 !important;
+        color: #ffffff !important;
+        border: 2px solid #6c5ce7 !important;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    .stFileUploader button:hover {
+        background-color: #5b4bc4 !important;
+        border-color: #5b4bc4 !important;
+    }
+    
+    /* Download button */
+    .stDownloadButton > button {
+        background-color: #6c5ce7 !important;
+        color: #ffffff !important;
+        border: 2px solid #6c5ce7 !important;
+        border-radius: 20px;
+        padding: 10px 24px;
+        font-weight: 600;
+    }
+    .stDownloadButton > button:hover {
+        background-color: #5b4bc4 !important;
+        border-color: #5b4bc4 !important;
+        color: #ffffff !important;
+    }
+    
     /* Predict Button */
-    .stButton>button {
+    .stButton > button {
         background-color: #6c5ce7;
         color: #ffffff;
         border: none;
@@ -53,7 +97,7 @@ st.markdown("""
         width: 100%;
         box-shadow: 0 4px 6px rgba(108, 92, 231, 0.2);
     }
-    .stButton>button:hover {
+    .stButton > button:hover {
         background-color: #5b4bc4;
         color: #ffffff;
         box-shadow: 0 6px 12px rgba(108, 92, 231, 0.3);
@@ -74,18 +118,9 @@ st.markdown("""
         transform: translateY(-5px);
     }
     
-    /* Sidebar */
-    [data-testid="stSidebar"] {
-        background-color: #ffffff;
-        border-right: 1px solid #e0e6ed;
-    }
-    
     /* Technical Details Expander */
     .streamlit-expanderHeader {
-        background-color: #ffffff;
-        color: #2c3e50;
         border-radius: 8px;
-        border: 1px solid #e0e6ed;
     }
 </style>
 """, unsafe_allow_html=True)
